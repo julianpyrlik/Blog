@@ -172,7 +172,8 @@ def get_all_posts():
     return render_template("index.html",
                            all_posts=posts,
                            logged_in=current_user.is_authenticated,
-                           user_id=current_user.id if current_user.is_authenticated else None)
+                           user_id=current_user.id if current_user.is_authenticated else None,
+                           username=current_user.name if current_user.is_authenticated else None)
 
 
 # TODO: Allow logged-in users to comment on posts
@@ -262,12 +263,16 @@ def delete_post(post_id):
 
 @app.route("/about")
 def about():
-    return render_template("about.html", logged_in=current_user.is_authenticated)
+    return render_template("about.html",
+                           logged_in=current_user.is_authenticated,
+                           username=current_user.name if current_user.is_authenticated else None)
 
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html", logged_in=current_user.is_authenticated)
+    return render_template("contact.html",
+                           logged_in=current_user.is_authenticated,
+                           username=current_user.name if current_user.is_authenticated else None)
 
 
 

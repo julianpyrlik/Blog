@@ -60,6 +60,12 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ms-auto py-4 py-lg-0">
             <li class="nav-item">
+              {% if logged_in %}
+                <p class="nav-link px-lg-3 py-3 py-lg-4" style="color: white; font-size: x-small; position: absolute; top: -50px; right: 10px; font-style: italic;">Logged in as: <span class="username">{{ username }}</span></p>
+              {% endif %}
+            </li>
+
+            <li class="nav-item">
               <a
                 class="nav-link px-lg-3 py-3 py-lg-4"
                 href="{{ url_for('get_all_posts') }}"
@@ -85,7 +91,6 @@
               </li>
 
             {% else %}
-
               <li class="nav-item">
                 <a
                   class="nav-link px-lg-3 py-3 py-lg-4"
